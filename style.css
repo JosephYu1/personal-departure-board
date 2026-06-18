@@ -1,0 +1,315 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --green: #00ff66;
+    --yellow: #f5d76e;
+    --white: #ffffff;
+    --gray: #777;
+    --dark: #111;
+    --darker: #0b0b0b;
+    --line: #555;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--darker);
+    color: var(--yellow);
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+  }
+  
+  .board {
+    width: min(900px, 96vw);
+    border: clamp(1px, 0.4vw, 3px) solid var(--gray);
+    background: var(--dark);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* TOP TITLE */
+  
+  .board-title {
+    color: var(--white);
+    font-size: clamp(20px, 4vw, 42px);
+    font-weight: bold;
+    letter-spacing: clamp(1px, 0.5vw, 4px);
+    padding: clamp(12px, 2.5vw, 22px) clamp(10px, 2vw, 16px);
+    border-bottom: clamp(1px, 0.4vw, 3px) solid var(--gray);
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(8px, 2vw, 20px);
+  }
+  
+  .current-date {
+    color: var(--green);
+    font-size: clamp(14px, 3vw, 34px);
+    letter-spacing: clamp(0px, 0.3vw, 2px);
+    white-space: nowrap;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* WORLD TIME SECTION */
+  
+  .row-3,
+  .clock-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 0.8fr);
+  }
+  
+  .clock-header {
+    color: var(--white);
+    background: #1d1d1d;
+    border-bottom: clamp(1px, 0.4vw, 3px) solid var(--gray);
+  }
+  
+  .clock-row {
+    border-bottom: 2px solid #333;
+  }
+  
+  .clock-row:last-child {
+    border-bottom: none;
+  }
+  
+  .clock-header > div,
+  .clock-row > div {
+    padding: clamp(8px, 2vw, 16px) clamp(8px, 2.4vw, 22px);
+    font-size: clamp(13px, 3vw, 34px);
+    border-right: 2px solid var(--line);
+    text-transform: uppercase;
+  
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .clock-header > div:last-child,
+  .clock-row > div:last-child {
+    border-right: none;
+  }
+  
+  .clock-header > div {
+    font-size: clamp(11px, 2vw, 24px);
+    color: #bbb;
+    letter-spacing: clamp(0px, 0.3vw, 2px);
+  }
+  
+  .time {
+    color: var(--green);
+  }
+  
+ /* ARRIVALS SECTION */
+
+.countdown-title {
+    color: var(--white);
+    text-align: center;
+    font-size: clamp(18px, 3.5vw, 36px);
+    font-weight: bold;
+    letter-spacing: clamp(1px, 0.5vw, 4px);
+    padding: clamp(12px, 2.5vw, 20px) clamp(10px, 2vw, 16px);
+    border-top: clamp(1px, 0.4vw, 3px) solid var(--gray);
+    border-bottom: clamp(1px, 0.4vw, 3px) solid var(--gray);
+  }
+  
+  .countdown-row {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.9fr)
+      minmax(0, 3.6fr)
+      minmax(0, 0.55fr)
+      minmax(0, 0.9fr);
+    border-bottom: 2px solid #333;
+    align-items: center;
+  }
+  
+  .countdown-row:last-child {
+    border-bottom: none;
+  }
+  
+  .countdown-row > div {
+    padding: clamp(8px, 2vw, 16px) clamp(4px, 1.2vw, 14px);
+    font-size: var(--arrival-font-size, 22px);
+    text-transform: uppercase;
+    border-right: 2px solid var(--line);
+  
+    min-width: 0;
+    white-space: nowrap;
+  
+    /* Prevent spilling */
+    overflow: hidden;
+    text-overflow: clip;
+  }
+  
+  .countdown-row > div:last-child {
+    border-right: none;
+  }
+  
+  .countdown-header {
+    background: #1d1d1d;
+    color: #bbb;
+    border-bottom: clamp(1px, 0.4vw, 3px) solid var(--gray);
+  }
+  
+  .countdown-header > div {
+    font-size: calc(var(--arrival-font-size, 22px) * 0.65);
+    letter-spacing: clamp(0px, 0.25vw, 2px);
+  }
+  
+  .arrival {
+    color: var(--white);
+  }
+  
+  .on-time,
+  .boarding {
+    color: var(--green);
+  }
+  
+  .departed {
+    color: #888;
+  }
+  
+  /* SMALL SCREENS / PHONES */
+  
+  @media (max-width: 650px) {
+    body {
+      align-items: flex-start;
+    }
+  
+    @media (max-width: 650px) {
+        body {
+          align-items: flex-start;
+          padding: 10px;
+        }
+      
+        .board {
+          width: 100%;
+          border: clamp(1px, 0.4vw, 3px) solid var(--gray);
+        }
+      
+        .board-title {
+          padding: 12px 8px;
+          gap: 8px;
+        }
+      
+        .current-date {
+          font-size: clamp(12px, 3.4vw, 20px);
+        }
+      
+        .clock-header > div,
+        .clock-row > div {
+          padding: 10px 6px;
+          font-size: clamp(12px, 4vw, 20px);
+          border-right-width: 1px;
+        }
+      
+        .clock-header > div {
+          font-size: clamp(9px, 2.8vw, 14px);
+        }
+      
+        .countdown-row {
+          grid-template-columns:
+            minmax(0, 1.1fr)
+            minmax(0, 0.95fr)
+            minmax(0, 2.1fr)
+            minmax(0, 0.55fr)
+            minmax(0, 0.95fr);
+        }
+      
+        .countdown-row > div {
+          padding: 8px 3px;
+          font-size: var(--arrival-font-size, 12px);
+          border-right-width: 1px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: clip;
+        }
+      
+        .countdown-header > div {
+          font-size: calc(var(--arrival-font-size, 22px) * 0.65);
+        }
+      
+        .countdown-title {
+          padding: 12px 8px;
+        }
+      }
+  
+    .board-title {
+      padding: 12px 8px;
+      gap: 8px;
+    }
+  
+    .current-date {
+      font-size: clamp(12px, 3.4vw, 20px);
+    }
+  
+    .clock-header > div,
+    .clock-row > div {
+      padding: 10px 6px;
+      font-size: clamp(12px, 4vw, 20px);
+      border-right-width: 1px;
+    }
+  
+    .clock-header > div {
+      font-size: clamp(9px, 2.8vw, 14px);
+    }
+  
+    .countdown-row {
+      grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(0, 0.95fr)
+        minmax(0, 2.1fr)
+        minmax(0, 0.55fr)
+        minmax(0, 0.95fr);
+    }
+  
+    .countdown-row > div {
+        padding: 8px 3px;
+        font-size: var(--arrival-font-size, 12px);
+        border-right-width: 1px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
+    }
+  
+    .countdown-header > div {
+        font-size: calc(var(--arrival-font-size, 22px) * 0.65);
+      }
+  
+    .countdown-title {
+      padding: 12px 8px;
+    }
+  }
+  
+  /* VERY NARROW SCREENS */
+  
+  @media (max-width: 420px) {
+    .board-title {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .current-date {
+      text-align: center;
+    }
+  
+    .countdown-row > div {
+        padding: 7px 2px;
+        font-size: var(--arrival-font-size, 10px);
+      }
+  
+    .clock-row > div,
+    .clock-header > div {
+      padding: 8px 4px;
+    }
+  }
