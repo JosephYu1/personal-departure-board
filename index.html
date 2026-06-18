@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arrivals / Departures Board</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="board">
+    <header class="board-title">
+        <div>WORLD TIME</div>
+        <div id="currentDate" class="current-date"></div>
+      </header>
+
+    <section class="clock-section">
+      <div class="clock-header row-3">
+        <div>CITY</div>
+        <div>TIME</div>
+        <div>CODE</div>
+      </div>
+
+      <div id="clockRows"></div>
+    </section>
+
+    <section class="countdown-title">
+      ARRIVALS
+    </section>
+
+    <section class="countdown-section">
+        <div class="countdown-header countdown-row">
+          <div>ARRIVAL</div>
+          <div>FLIGHT</div>
+          <div>DESTINATION</div>
+          <div>GATE</div>
+          <div>STATUS</div>
+        </div>
+      
+        <div id="countdownRows"></div>
+      </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
