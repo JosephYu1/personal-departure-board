@@ -20,9 +20,9 @@ const clocks = [
       code: "BOS"
     },
     {
-      city: "Dallas",
+      city: "Houston",
       timezone: "America/Chicago",
-      code: "DFW"
+      code: "IAH"
     },
     {
       city: "Denver",
